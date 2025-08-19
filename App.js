@@ -5,7 +5,7 @@ import products from "./store/productList";
 export default function App() {
   return (
     <div>
-      {products.map((id, title, rating, price, imageurl) => (
+      {products.map(({ id, title, rating, price, imageurl }) => (
         <Product
           key={id}
           title={title}
