@@ -1,15 +1,16 @@
 import React from "react";
 import Product from "./components/Product";
 import products from "./store/productList";
+import "./App.css";
 
 export default function App() {
   return (
-    <div>
-      {products.map(({ id, title, rating, price, imageurl }) => (
+    <div className="products-container">
+      {products.map(({ id, title, rating, price, image }) => (
         <Product
           key={id}
           title={title}
-          imageUrl={imageurl}
+          image={image}
           price={price}
           rating={rating}
         />

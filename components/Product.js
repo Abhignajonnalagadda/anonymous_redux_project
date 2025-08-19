@@ -1,9 +1,9 @@
 import React from "react";
-const Product = ({ title, rating, price, imageUrl }) => {
+const Product = ({ title, rating, price, image }) => {
   return (
     <div className="product">
       <div className="product-image">
-        <img src={imageUrl} alt={title} />
+        <img src={image} alt={title} />
       </div>
       <div className="title-container">
         <h3>
@@ -22,4 +22,4 @@ const Product = ({ title, rating, price, imageUrl }) => {
   );
 };
 
-export default Product
+export default Product;
