@@ -15,9 +15,48 @@ body {
 button {
     font-family: inherit;
     padding: 8px;
+    border: 1px solid #6c6c6b;
+    border-radius:3px;
+    background-color: white;
+    width: auto;
+    flex:1;
 }
 
 a {
     text-decoration-line:none;
     color:inherit;
+}
+
+
+img {
+    height:200px;
+    width: 150px;
+    align-self: center;
+}
+
+.product {
+    border-radius: 5px;
+    border: 2px solid rgb(131, 131, 131); 
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+h3 {
+    text-align: center;
+}
+
+.btns-container {
+    display: flex;
+    gap:5px;
+    width:100%;
+}
+
+.rating-price-container {
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
 }
