@@ -10,7 +10,7 @@ const Product = ({ title, rating, price, image }) => {
       </div>
       <div className="rating-price-container">
         <p>{rating.rate} ⭐️⭐️⭐️⭐️⭐️</p>
-        <p>${price}</p>
+        <p className="price">${price}</p>
       </div>
       <div className="btns-container">
         <button>Add to cart</button>
