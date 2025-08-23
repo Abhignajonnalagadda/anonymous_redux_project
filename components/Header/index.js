@@ -7,7 +7,9 @@ const Header = () => {
     <>
       <header>
         <div className="header-container">
-          <h2>Store</h2>
+          <Link to="/">
+            <h2>Store</h2>
+          </Link>
           <Link to="/cart" className="cart-link">
             <div className="cart">
               <FaCartShopping />
