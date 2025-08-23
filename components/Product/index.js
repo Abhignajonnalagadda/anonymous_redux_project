@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 const Product = ({ title, rating, price, image }) => {
   return (
     <div className="product">
