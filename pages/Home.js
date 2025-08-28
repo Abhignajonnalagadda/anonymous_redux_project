@@ -12,6 +12,7 @@ const Home = () => {
           image={image}
           price={price}
           rating={rating}
+          id={id}
         />
       ))}
     </div>

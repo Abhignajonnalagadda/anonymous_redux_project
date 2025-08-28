@@ -1,6 +1,8 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../store/cartReducer";
 import "./index.css";
-const Product = ({ title, rating, price, image }) => {
+const Product = ({ title, rating, price, image, id }) => {
+  const dispatch = useDispatch();
   return (
     <div className="product">
       <img src={image} alt={title} />
@@ -14,7 +16,7 @@ const Product = ({ title, rating, price, image }) => {
         <p className="product-price">${price}</p>
       </div>
       <div className="btns-container">
-        <button>Add to cart</button>
+        <button onClick={() => dispatch(addItemToCart(id))}>Add to cart</button>
         <button>Buy Now</button>
       </div>
     </div>

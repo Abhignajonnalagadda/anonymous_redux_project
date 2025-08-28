@@ -1,57 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
 .products-container {
-    display: grid;
-    padding: 16px;
-    margin-inline: auto;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 24px;
-    margin-top:24px;
-    max-width:1200px;
+  display: grid;
+  padding: 16px;
+  margin-inline: auto;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+  max-width: 1200px;
 }
 
 .cart-container {
-    padding: 16px;
-    margin-inline: auto;
-    margin-top: 24px;
-    width: 1200px;
+  padding: 16px;
+  margin-inline: auto;
+  margin-top: 24px;
+  max-width: 1200px;
 }
 
 .cart-header {
-    text-align: center;
-    width: 100%;
-}.list {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.list {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .list li {
-  display: flex;
+  font-family: Nunito, sans-serif;
+  border-bottom: 1px solid #eee;
   align-items: center;
-  padding: 8px 0;
+  padding: 12px 0;
+  display: flex;
 }
 
-.list li p {
+.list li:first-child {
+  font-weight: bold;
+  background-color: #f8f9fa;
+  padding: 16px 0;
+}
+
+.list li:first-child p {
+  color: #495057;
+}
+
+/* Header row styling */
+.list li:first-child .item,
+.list li:first-child .price,
+.list li:first-child .quantity,
+.list li:first-child .total {
   margin: 0;
-  padding: 4px 8px;
+  padding: 0 16px;
+  flex: 1;
 }
 
-.item {
-  flex: 0 0 50%;
-}
-.price {
-  flex: 0 0 15%;
-}
-.quantity {
-  flex: 0 0 15%;
+.list li:first-child .item {
+  flex: 2;
 }
 
-.total {
-  margin-left: auto;
+.list li:first-child .price,
+.list li:first-child .quantity {
+  text-align: center;
+}
+
+.list li:first-child .total {
   text-align: right;
-  flex: 0 0 auto;
 }
+
+/* Cart item row styling */
+.list li:not(:first-child) .item {
+  flex: 2;
+  padding: 0 16px;
+}
+
+.list li:not(:first-child) .price {
+  flex: 1;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.list li:not(:first-child) .quantity {
+  flex: 1;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.list li:not(:first-child) .total {
+  flex: 1;
+  text-align: right;
+  padding: 0 16px;
+  font-weight: bold;
+}
+
 .list hr {
-  border: none;
-  border-top: 1px solid #ccc;
-  margin: 0;
+  display: none;
 }
