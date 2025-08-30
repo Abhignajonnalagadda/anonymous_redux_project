@@ -16,6 +16,17 @@ const Cart = () => {
         {cartItems.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
+        <li>
+          <p className="item"></p>
+          <p className="price"></p>
+          <p className="quantity"></p>
+          <p className="total">
+            $
+            {cartItems
+              .reduce((acc, item) => acc + item.quantity * item.price, 0)
+              .toFixed(2)}
+          </p>
+        </li>
       </ul>
     </div>
   );
