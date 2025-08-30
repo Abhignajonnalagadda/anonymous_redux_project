@@ -16,7 +16,13 @@ const Product = ({ title, rating, price, image, id }) => {
         <p className="product-price">${price}</p>
       </div>
       <div className="btns-container">
-        <button onClick={() => dispatch(addItemToCart(id))}>Add to cart</button>
+        <button
+          onClick={() =>
+            dispatch(addItemToCart({ price, id, title, rating, image }))
+          }
+        >
+          Add to cart
+        </button>
         <button>Buy Now</button>
       </div>
     </div>

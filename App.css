@@ -21,6 +21,24 @@
   text-align: center;
   width: 100%;
   margin-bottom: 24px;
+  font-family: Nunito, sans-serif;
+  color: #333;
+}
+
+.cart-summary {
+  margin-top: 32px;
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  text-align: right;
+  border-top: 2px solid #dee2e6;
+}
+
+.cart-summary h3 {
+  margin: 0;
+  font-family: Nunito, sans-serif;
+  color: #333;
+  font-size: 1.5rem;
 }
 
 .list {
@@ -98,4 +116,13 @@
 
 .list hr {
   display: none;
+}
+
+/* Empty cart styling */
+.cart-container p {
+  text-align: center;
+  font-family: Nunito, sans-serif;
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-top: 16px;
 }
