@@ -1,12 +1,19 @@
+import { useDispatch } from "react-redux";
+import {
+  increaseCartQuantity,
+  decreaseCartQuantity
+} from "../../store/cartReducer";
 import "./index.css";
 
 const CartItem = ({ cartItem }) => {
+  const dispatch = useDispatch();
   const {
     price = 0,
     quantity = 1,
     title = "Product Name",
     rating = 0,
-    image = "https://via.placeholder.com/60x60?text=No+Image"
+    image = "https://via.placeholder.com/60x60?text=No+Image",
+    id
   } = cartItem;
 
   return (
@@ -20,9 +27,21 @@ const CartItem = ({ cartItem }) => {
       </div>
       <p className="price">${price}</p>
       <div className="quantity">
-        <button>-</button>
+        <button
+          onClick={() => {
+            dispatch(decreaseCartQuantity(id));
+          }}
+        >
+          -
+        </button>
         <p>{quantity}</p>
-        <button>+</button>
+        <button
+          onClick={() => {
+            dispatch(increaseCartQuantity(id));
+          }}
+        >
+          +
+        </button>
       </div>
       <p className="total">${(price * quantity).toFixed(2)}</p>
     </li>
