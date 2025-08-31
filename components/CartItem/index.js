@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import {
   increaseCartQuantity,
   decreaseCartQuantity
-} from "../../store/cartReducer";
+} from "../../store/slices/cartSlicer";
 import "./index.css";
 
 const CartItem = ({ cartItem }) => {
