@@ -1,45 +1,40 @@
+import { produce } from "immer";
 const CART_ADD_ITEM = "cart/add_item";
 const CART_REMOVE_ITEM = "cart/remove_item";
 const CART_INCREASE_COUNT = "cart/increase_count";
 const CART_DECREASE_COUNT = "cart/decrease_count";
 
-export default function cartReducer(state = [], action) {
-  switch (action.type) {
-    case CART_ADD_ITEM: {
-      const existingItem = state.find((item) => item.id === action.payload.id);
-      if (existingItem) {
-        // If item exists, just increase its quantity
-        return state.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+export default function cartReducer(originalState = [], action) {
+  return produce(originalState, (state) => {
+    const existingItem = state.findIndex(
+      (item) => item.id === action.payload.id || item.id === action.payload
+    );
+    switch (action.type) {
+      case CART_ADD_ITEM: {
+        if (existingItem !== -1) {
+          state[existingItem].quantity += 1;
+          return state;
+        } else {
+          state.push({ ...action.payload, quantity: 1 });
+        }
+        break;
       }
-      return [...state, { ...action.payload, quantity: 1 }];
+      case CART_REMOVE_ITEM:
+        state.splice(existingItem, 1);
+        break;
+
+      case CART_INCREASE_COUNT:
+        state[existingItem].quantity += 1;
+        break;
+      case CART_DECREASE_COUNT:
+        state[existingItem].quantity -= 1;
+        if (state[existingItem].quantity === 0) {
+          state.splice(existingItem, 1);
+        }
+        break;
     }
-
-    case CART_REMOVE_ITEM:
-      return state.filter((item) => item.id !== action.payload);
-
-    case CART_INCREASE_COUNT:
-      return state.map((item) =>
-        item.id === action.payload
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-
-    case CART_DECREASE_COUNT:
-      return state
-        .map((item) =>
-          item.id === action.payload
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0);
-
-    default:
-      return state;
-  }
+    return state;
+  });
 }
 
 export function addItemToCart(productData) {
