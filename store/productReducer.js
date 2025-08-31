@@ -1,4 +1,8 @@
 import products from './productList'
-export default function productReducer (state = products, action){
-    return state;
-}
+import { createSlice } from "@reduxjs/toolkit";
+const slice = createSlice({
+    name:"product",
+    initialState: products,
+    reducers: {}
+})
+export default slice.reducer;

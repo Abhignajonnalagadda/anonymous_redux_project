@@ -14,7 +14,7 @@ const Cart = () => {
           <p className="total">Total</p>
         </li>
         {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
+          <CartItem key={cartItem.productId} cartItem={cartItem} />
         ))}
         <li>
           <p className="item"></p>

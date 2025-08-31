@@ -1,35 +1,17 @@
-import { produce } from "immer";
-const WISHLIST_ADD_ITEM = "wishlist/add_item";
-const WISHLIST_REMOVE_ITEM = "wishlist/remove_item";
+import { createSlice } from "@reduxjs/toolkit";
 
-export default function wishListReducer(originalState = [], action) {
-  return produce(originalState, (state) => {
-    switch (action.type) {
-      case WISHLIST_ADD_ITEM:
-        state.push(action.payload);
-        break;
-      case WISHLIST_REMOVE_ITEM:
-        state.splice(
-          state.findIndex((item) => item.id === action.payload),
-          1
-        );
-        break;
-      default:
-        return state;
+const slice = createSlice({
+    name: "wishLIst",
+    initialState: [],
+    reducers: {
+        addToWishList: (state, action) => {
+            state.push(action.payload);
+        },
+        removeFromWishList: (state, action) => {
+            state.splice(state.findIndex((item) => item.id === action.payload), 1);
+        }
     }
-    return state;
-  });
-}
-export const addToWishList = (id) => {
-  return {
-    type: WISHLIST_ADD_ITEM,
-    payload: id
-  };
-};
+})
 
-export const removeFromWishList = (id) => {
-  return {
-    type: WISHLIST_REMOVE_ITEM,
-    payload: id
-  };
-};
+export const { addToWishList, removeFromWishList } = slice.actions;
+export default slice.reducer;

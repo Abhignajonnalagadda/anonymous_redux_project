@@ -13,7 +13,7 @@ const CartItem = ({ cartItem }) => {
     title = "Product Name",
     rating = 0,
     image = "https://via.placeholder.com/60x60?text=No+Image",
-    id
+    productId
   } = cartItem;
 
   return (
@@ -29,7 +29,7 @@ const CartItem = ({ cartItem }) => {
       <div className="quantity">
         <button
           onClick={() => {
-            dispatch(decreaseCartQuantity(id));
+            dispatch(decreaseCartQuantity({ productId }));
           }}
         >
           -
@@ -37,7 +37,7 @@ const CartItem = ({ cartItem }) => {
         <p>{quantity}</p>
         <button
           onClick={() => {
-            dispatch(increaseCartQuantity(id));
+            dispatch(increaseCartQuantity({ productId }));
           }}
         >
           +

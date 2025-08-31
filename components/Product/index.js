@@ -18,7 +18,7 @@ const Product = ({ title, rating, price, image, id }) => {
       <div className="btns-container">
         <button
           onClick={() =>
-            dispatch(addItemToCart({ price, id, title, rating, image }))
+            dispatch(addItemToCart({ price, productId: id, title, rating, image }))
           }
         >
           Add to cart
