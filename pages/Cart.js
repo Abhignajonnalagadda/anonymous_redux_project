@@ -1,16 +1,9 @@
 import CartItem from "../components/CartItem";
 import { useSelector } from "react-redux";
+import { getAllCartItems } from "../store/slices/cartSlicer";
 const Cart = () => {
   const isLoading = useSelector((store) => store.cart.isLoading);
-  const cartItems = useSelector(({ cart, product }) => {
-    console.log("===> cart, ", cart);
-    return cart.list.map((cartItem) => {
-      return {
-        ...cartItem,
-        ...product.products.find((p) => p.id === cartItem.productId)
-      };
-    });
-  });
+  const cartItems = useSelector(getAllCartItems);
   return isLoading ? (
     <h1 style={{ textAlign: "center" }}>Loading....</h1>
   ) : (
