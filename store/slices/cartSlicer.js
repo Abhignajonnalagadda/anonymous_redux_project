@@ -51,15 +51,12 @@ const slice = createSlice({
 });
 
 export const getAllCartItems = createSelector(
-  ({ cart, product }) => {
-    return cart.list.map((cartItem) => {
-      return {
-        ...cartItem,
-        ...product.products.find((p) => p.id === cartItem.productId)
-      };
-    });
-  },
-  (items) => items
+  [(state) => state.cart.list, (state) => state.product.products],
+  (cartList, products) =>
+    cartList.map((cartItem) => ({
+      ...cartItem,
+      ...products.find((p) => p.id === cartItem.productId)
+    }))
 );
 
 export const {
