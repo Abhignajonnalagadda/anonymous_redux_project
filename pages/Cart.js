@@ -1,7 +1,14 @@
 import CartItem from "../components/CartItem";
 import { useSelector } from "react-redux";
 const Cart = () => {
-  const cartItems = useSelector((store) => store.cart);
+  const cartItems = useSelector(({ cart, product }) => {
+    return cart.map((cartItem) => {
+      return {
+        ...cartItem,
+        ...product.products.find((p) => p.id === cartItem.productId)
+      };
+    });
+  });
   console.log(cartItems);
   return (
     <div className="cart-container">
