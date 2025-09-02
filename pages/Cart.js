@@ -1,16 +1,19 @@
 import CartItem from "../components/CartItem";
 import { useSelector } from "react-redux";
 const Cart = () => {
+  const isLoading = useSelector((store) => store.cart.isLoading);
   const cartItems = useSelector(({ cart, product }) => {
-    return cart.map((cartItem) => {
+    console.log("===> cart, ", cart);
+    return cart.list.map((cartItem) => {
       return {
         ...cartItem,
         ...product.products.find((p) => p.id === cartItem.productId)
       };
     });
   });
-  console.log(cartItems);
-  return (
+  return isLoading ? (
+    <h1 style={{ textAlign: "center" }}>Loading....</h1>
+  ) : (
     <div className="cart-container">
       <h2 className="cart-header">Items in your cart</h2>
       <ul className="list">
