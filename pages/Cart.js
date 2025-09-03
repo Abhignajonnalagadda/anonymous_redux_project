@@ -1,8 +1,8 @@
 import CartItem from "../components/CartItem";
 import { useSelector } from "react-redux";
-import { getAllCartItems } from "../store/slices/cartSlicer";
+import { getAllCartItems, getIsLoading } from "../store/slices/cartSlicer";
 const Cart = () => {
-  const isLoading = useSelector((store) => store.cart.isLoading);
+  const isLoading = useSelector(getIsLoading);
   const cartItems = useSelector(getAllCartItems);
   return isLoading ? (
     <h1 style={{ textAlign: "center" }}>Loading....</h1>

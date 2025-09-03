@@ -1,10 +1,11 @@
 import Product from "../components/Product";
 import { useSelector } from "react-redux";
+import { getProducts, getIsFetching, getError } from "../store/slices/productSlicer";
 
 const Home = () => {
-  const productList = useSelector((store) => store.product.products);
-  const isFetching = useSelector((store) => store.product.isFetching);
-  const error = useSelector((store) => store.product.error);
+  const productList = useSelector(getProducts);
+  const isFetching = useSelector(getIsFetching);
+  const error = useSelector(getError);
 
   return isFetching ? (
     <h1 style={{textAlign: "center"}}>Loading...</h1>

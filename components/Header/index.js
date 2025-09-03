@@ -11,12 +11,13 @@ import {
 import {
   loadCartItems,
   setIsLoading,
-  setError
+  setError,
+  getAllCartItems
 } from "../../store/slices/cartSlicer";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const cart = useSelector((store) => store.cart.list);
+  const cart = useSelector(getAllCartItems);
   const cartItemCount = cart?.reduce((acc, item) => acc + item.quantity, 0);
   useEffect(() => {
     const fetchData = async () => {

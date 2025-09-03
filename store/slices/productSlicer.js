@@ -20,5 +20,8 @@ const slice = createSlice({
         }
     }
 })
+export const getIsFetching = (store) => store.product.isFetching
+export const getError = (store) => store.product.error
+export const getProducts = (store) => store.product.products
 export const { addProducts, fetchInProgress, fetchError } = slice.actions;
 export default slice.reducer;

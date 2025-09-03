@@ -59,6 +59,10 @@ export const getAllCartItems = createSelector(
     }))
 );
 
+export const getTotalCartItems = (store) => store.cart.list
+
+export const getIsLoading = (store) => store.cart.isLoading
+
 export const {
   loadCartItems,
   setIsLoading,
