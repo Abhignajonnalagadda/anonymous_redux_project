@@ -14,31 +14,25 @@ import {
   setError,
   getAllCartItems
 } from "../../store/slices/cartSlicer";
+import fetchApi from "../../store/middlewares/api";
 
 const Header = () => {
   const dispatch = useDispatch();
   const cart = useSelector(getAllCartItems);
   const cartItemCount = cart?.reduce((acc, item) => acc + item.quantity, 0);
   useEffect(() => {
-    const fetchData = async () => {
-      dispatch(fetchInProgress(true));
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        dispatch(addProducts(data));
-      } catch (e) {
-        dispatch(fetchError(e.message));
-      }
-      dispatch(setIsLoading(true));
-      try {
-        const response = await fetch("https://fakestoreapi.com/carts/1");
-        const data = await response.json();
-        dispatch(loadCartItems(data));
-      } catch (e) {
-        dispatch(setError(e.message));
-      }
-    };
-    fetchData();
+    dispatch(fetchApi({
+      url: "products",
+      onStart: fetchInProgress,
+      onSuccess: addProducts,
+      onError: fetchError
+    }))
+    dispatch(fetchApi({
+      url: "carts/1",
+      onStart: setIsLoading,
+      onSuccess: loadCartItems,
+      onError: setError
+    }))
   }, [dispatch]);
 
   return (
